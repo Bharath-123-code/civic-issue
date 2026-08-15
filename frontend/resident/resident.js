@@ -1,0 +1,1 @@
+// frontend/resident/resident.js
