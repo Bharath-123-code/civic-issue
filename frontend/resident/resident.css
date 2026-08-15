@@ -1,1 +1,1196 @@
 /* frontend/resident/resident.css */
+/* ==========================================================================
+   CIVICFIX — RESIDENT EXPERIENCE STYLES
+   Scoped with .civic-resident-* prefix to guarantee 100% style isolation.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Base & Ambient Background
+   -------------------------------------------------------------------------- */
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body.civic-resident-body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--cf-font-sans);
+  background-color: #f8fafc;
+  color: var(--cf-slate-800);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ambient Floating Background Mesh */
+.civic-resident-ambient-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.civic-resident-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.65;
+  will-change: transform;
+}
+
+.civic-resident-blob-1 {
+  top: -10%;
+  right: -5%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(6, 182, 212, 0.15) 100%);
+  animation: cfFloatBlob 18s ease-in-out infinite alternate;
+}
+
+.civic-resident-blob-2 {
+  bottom: 10%;
+  left: -8%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, rgba(16, 185, 129, 0.12) 100%);
+  animation: cfFloatBlob 22s ease-in-out infinite alternate-reverse;
+}
+
+.civic-resident-blob-3 {
+  top: 40%;
+  left: 30%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, rgba(244, 63, 94, 0.08) 100%);
+  animation: cfFloatBlob 25s ease-in-out infinite alternate;
+}
+
+.civic-resident-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(148, 163, 184, 0.15) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.8) 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.8) 0%, transparent 80%);
+}
+
+@keyframes cfFloatBlob {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, 40px) scale(1.08); }
+  100% { transform: translate(-25px, -20px) scale(0.95); }
+}
+
+/* --------------------------------------------------------------------------
+   2. Navbar Header
+   -------------------------------------------------------------------------- */
+.civic-resident-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: var(--cf-glass-blur);
+  -webkit-backdrop-filter: var(--cf-glass-blur);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
+}
+
+.civic-resident-nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.875rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.civic-resident-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  user-select: none;
+}
+
+.civic-resident-brand-icon {
+  font-size: 1.25rem;
+  background: var(--cf-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: cfTwinkle 3s ease-in-out infinite;
+}
+
+.civic-resident-brand-text {
+  font-family: var(--cf-font-sans);
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  color: var(--cf-slate-900);
+}
+
+.civic-resident-brand-accent {
+  background: var(--cf-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.civic-resident-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: var(--cf-radius-full);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #065f46;
+}
+
+@keyframes cfTwinkle {
+  0%, 100% { transform: scale(1) rotate(0deg); filter: brightness(1); }
+  50% { transform: scale(1.15) rotate(15deg); filter: brightness(1.3); }
+}
+
+/* --------------------------------------------------------------------------
+   3. Main Container & Hero Section
+   -------------------------------------------------------------------------- */
+.civic-resident-main {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.civic-resident-hero {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 2.5rem;
+}
+
+.civic-resident-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(79, 70, 229, 0.08);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  border-radius: var(--cf-radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--cf-primary-700);
+  margin-bottom: 1rem;
+}
+
+.civic-resident-sparkle {
+  color: var(--cf-primary-600);
+}
+
+.civic-resident-hero-title {
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--cf-slate-900);
+  margin: 0 0 1rem;
+}
+
+.civic-resident-title-gradient {
+  background: var(--cf-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.civic-resident-hero-subtitle {
+  font-size: clamp(1rem, 1.8vw, 1.1875rem);
+  color: var(--cf-slate-600);
+  line-height: 1.6;
+  margin: 0 auto 1.75rem;
+  max-width: 580px;
+}
+
+/* Stepper Indicator */
+.civic-resident-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--cf-glass-border-subtle);
+  backdrop-filter: var(--cf-glass-blur-sm);
+  border-radius: var(--cf-radius-full);
+  box-shadow: var(--cf-shadow-sm);
+}
+
+.civic-resident-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--cf-radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cf-slate-400);
+  transition: all var(--cf-transition-base);
+}
+
+.civic-resident-step-num {
+  font-family: var(--cf-font-mono);
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.civic-resident-step.active {
+  color: #ffffff;
+  background: var(--cf-gradient-primary);
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+}
+
+.civic-resident-step.completed {
+  color: #059669;
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.civic-resident-step-arrow {
+  color: var(--cf-slate-300);
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+/* --------------------------------------------------------------------------
+   4. Two-Column Layout Grid (Desktop Sticky Map)
+   -------------------------------------------------------------------------- */
+.civic-resident-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .civic-resident-layout-grid {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 2.25rem;
+  }
+
+  .civic-resident-map-column {
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .civic-resident-map-slot-mobile {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .civic-resident-map-column {
+    display: none; /* Map moved to mobile slot via JS/DOM structure */
+  }
+
+  .civic-resident-map-slot-mobile {
+    display: block;
+    margin: 1.5rem 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Cards & Section Headings
+   -------------------------------------------------------------------------- */
+.civic-resident-card {
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  transition: border-color var(--cf-transition-base), box-shadow var(--cf-transition-base);
+}
+
+.civic-resident-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.civic-resident-step-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--cf-radius-sm);
+  background: var(--cf-primary-50);
+  color: var(--cf-primary-700);
+  font-family: var(--cf-font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--cf-primary-200);
+}
+
+.civic-resident-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cf-slate-900);
+  margin: 0;
+  flex: 1;
+}
+
+.civic-resident-card-desc {
+  font-size: 0.875rem;
+  color: var(--cf-slate-500);
+  margin: 0 0 1.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   6. Step 1: Image Dropzone & Preview
+   -------------------------------------------------------------------------- */
+.civic-resident-dropzone {
+  position: relative;
+  border: 2px dashed rgba(99, 102, 241, 0.35);
+  border-radius: var(--cf-radius-lg);
+  background: rgba(248, 250, 252, 0.6);
+  padding: 2.25rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  transition: all var(--cf-transition-base);
+  overflow: hidden;
+}
+
+.civic-resident-dropzone:hover,
+.civic-resident-dropzone:focus-visible {
+  border-color: var(--cf-primary-500);
+  background: rgba(238, 242, 255, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -4px rgba(79, 70, 229, 0.15);
+}
+
+.civic-resident-dropzone.dragover {
+  border-color: var(--cf-cyan-500);
+  background: rgba(207, 250, 254, 0.4);
+  transform: scale(1.02);
+  box-shadow: var(--cf-shadow-glow-cyan);
+}
+
+.civic-resident-file-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.civic-resident-camera-icon-wrap {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 0.875rem;
+  border-radius: 50%;
+  background: var(--cf-primary-50);
+  color: var(--cf-primary-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+  transition: transform var(--cf-transition-bounce);
+}
+
+.civic-resident-dropzone:hover .civic-resident-camera-icon-wrap,
+.civic-resident-dropzone.dragover .civic-resident-camera-icon-wrap {
+  transform: scale(1.1) rotate(5deg);
+  background: var(--cf-gradient-primary);
+  color: #ffffff;
+}
+
+.civic-resident-camera-svg {
+  width: 28px;
+  height: 28px;
+}
+
+.civic-resident-dropzone-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1.125rem;
+}
+
+.civic-resident-drop-primary {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--cf-slate-800);
+}
+
+.civic-resident-drop-secondary {
+  font-size: 0.8125rem;
+  color: var(--cf-slate-500);
+}
+
+.civic-resident-btn-browse {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.125rem;
+  border-radius: var(--cf-radius-full);
+  background: #ffffff;
+  border: 1px solid var(--cf-slate-300);
+  color: var(--cf-slate-700);
+  font-family: var(--cf-font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: var(--cf-shadow-xs);
+  pointer-events: none; /* Let container handle click */
+  transition: all var(--cf-transition-fast);
+}
+
+/* Image Preview */
+.civic-resident-preview-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: cfFadeInUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.civic-resident-preview-img-wrapper {
+  position: relative;
+  width: 100%;
+  max-height: 240px;
+  border-radius: var(--cf-radius-md);
+  overflow: hidden;
+  box-shadow: var(--cf-shadow-md);
+  background: #0f172a;
+}
+
+.civic-resident-preview-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+
+.civic-resident-preview-overlay {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+}
+
+.civic-resident-preview-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.75rem 1rem;
+  border-radius: var(--cf-radius-md);
+  border: 1px solid var(--cf-slate-200);
+}
+
+.civic-resident-preview-meta {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 0.15rem;
+}
+
+.civic-resident-preview-filename {
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--cf-slate-800);
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.civic-resident-preview-filesize {
+  font-family: var(--cf-font-mono);
+  font-size: 0.75rem;
+  color: var(--cf-slate-500);
+}
+
+.civic-resident-preview-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 20; /* Above hidden file input */
+}
+
+.civic-resident-btn-secondary {
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--cf-radius-sm);
+  background: var(--cf-slate-100);
+  border: 1px solid var(--cf-slate-300);
+  color: var(--cf-slate-700);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--cf-transition-fast);
+}
+
+.civic-resident-btn-secondary:hover {
+  background: var(--cf-slate-200);
+}
+
+.civic-resident-btn-remove {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--cf-radius-sm);
+  background: rgba(244, 63, 94, 0.1);
+  border: 1px solid rgba(244, 63, 94, 0.25);
+  color: var(--cf-rose-600);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--cf-transition-fast);
+}
+
+.civic-resident-btn-remove:hover {
+  background: var(--cf-rose-500);
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   7. Step 2: Interactive Leaflet Map & Locate Me
+   -------------------------------------------------------------------------- */
+.civic-resident-map-card {
+  margin-bottom: 0;
+}
+
+.civic-resident-map-header {
+  align-items: flex-start;
+}
+
+.civic-resident-btn-locate {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: var(--cf-radius-full);
+  background: #ffffff;
+  border: 1px solid rgba(79, 70, 229, 0.3);
+  color: var(--cf-primary-700);
+  font-family: var(--cf-font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--cf-shadow-sm);
+  transition: all var(--cf-transition-bounce);
+}
+
+.civic-resident-btn-locate:hover {
+  transform: translateY(-2px);
+  background: var(--cf-primary-50);
+  border-color: var(--cf-primary-500);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+}
+
+.civic-resident-btn-locate.locating {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.civic-resident-btn-locate.locating .civic-resident-locate-svg {
+  animation: cfSpin 1s linear infinite;
+}
+
+.civic-resident-map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  border-radius: var(--cf-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--cf-shadow-md);
+  border: 1px solid var(--cf-slate-200);
+  background: #e2e8f0;
+}
+
+.civic-resident-map {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+/* Map Overlay Tip */
+.civic-resident-map-overlay-tip {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: var(--cf-glass-blur-sm);
+  color: #ffffff;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--cf-radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  pointer-events: none;
+  box-shadow: var(--cf-shadow-md);
+  transition: opacity 0.3s ease;
+}
+
+/* Custom Leaflet Marker Styling */
+.cf-custom-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.cf-marker-pin {
+  width: 38px;
+  height: 38px;
+  border-radius: 50% 50% 50% 0;
+  background: var(--cf-gradient-primary);
+  position: absolute;
+  transform: rotate(-45deg);
+  left: 50%;
+  top: 50%;
+  margin: -24px 0 0 -19px;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.5);
+  border: 2px solid #ffffff;
+  cursor: grab;
+}
+
+.cf-marker-pin:active {
+  cursor: grabbing;
+}
+
+.cf-marker-pin::after {
+  content: '';
+  width: 14px;
+  height: 14px;
+  margin: 10px 0 0 10px;
+  background: #ffffff;
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.cf-marker-pulse {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  margin-left: -20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(6, 182, 212, 0.4);
+  animation: cfMarkerPulse 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes cfMarkerPulse {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  50% { transform: scale(1.6); opacity: 0.2; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Location Badges Bar */
+.civic-resident-location-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.875rem 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: var(--cf-radius-md);
+  border: 1px solid var(--cf-slate-200);
+}
+
+.civic-resident-location-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--cf-slate-600);
+}
+
+.civic-resident-loc-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cf-slate-400);
+}
+
+.civic-resident-location-bar.active .civic-resident-loc-dot {
+  background: var(--cf-emerald-500);
+  box-shadow: 0 0 8px var(--cf-emerald-400);
+}
+
+.civic-resident-location-bar.active .civic-resident-loc-status-text {
+  color: var(--cf-emerald-600);
+}
+
+.civic-resident-coords-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.35rem 0.75rem;
+  background: var(--cf-slate-900);
+  border-radius: var(--cf-radius-sm);
+  color: #ffffff;
+  font-family: var(--cf-font-mono);
+  font-size: 0.75rem;
+}
+
+.civic-resident-coord-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.civic-resident-coord-label {
+  color: var(--cf-cyan-400);
+  font-weight: 700;
+}
+
+.civic-resident-coord-val {
+  font-weight: 500;
+  color: #f1f5f9;
+}
+
+.civic-resident-coord-divider {
+  width: 1px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   8. Step 3: Category Selection & Description
+   -------------------------------------------------------------------------- */
+.civic-resident-field-group {
+  margin-bottom: 1.35rem;
+}
+
+.civic-resident-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.civic-resident-field-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--cf-slate-800);
+  display: block;
+}
+
+.civic-resident-required {
+  color: var(--cf-rose-500);
+}
+
+.civic-resident-field-hint {
+  font-size: 0.75rem;
+  color: var(--cf-slate-400);
+}
+
+/* Categories Grid */
+.civic-resident-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.civic-resident-category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.875rem 0.5rem;
+  border-radius: var(--cf-radius-md);
+  background: #ffffff;
+  border: 1.5px solid var(--cf-slate-200);
+  color: var(--cf-slate-700);
+  cursor: pointer;
+  min-height: 72px;
+  font-family: var(--cf-font-sans);
+  transition: all var(--cf-transition-bounce);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.civic-resident-category-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--cf-primary-400);
+  background: var(--cf-primary-50);
+  box-shadow: var(--cf-shadow-sm);
+}
+
+.civic-resident-category-card.selected {
+  border-color: var(--cf-primary-600);
+  background: rgba(238, 242, 255, 0.85);
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25), var(--cf-shadow-md);
+  transform: scale(1.03);
+}
+
+.civic-resident-cat-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.civic-resident-cat-name {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.civic-resident-category-card.selected .civic-resident-cat-name {
+  color: var(--cf-primary-800);
+}
+
+/* Inputs & Textarea */
+.civic-resident-input-wrapper,
+.civic-resident-textarea-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.civic-resident-input,
+.civic-resident-textarea {
+  width: 100%;
+  font-family: var(--cf-font-sans);
+  font-size: 0.9375rem;
+  color: var(--cf-slate-900);
+  background: #ffffff;
+  border: 1.5px solid var(--cf-slate-200);
+  border-radius: var(--cf-radius-md);
+  padding: 0.875rem 1rem;
+  transition: all var(--cf-transition-fast);
+  outline: none;
+}
+
+.civic-resident-input::placeholder,
+.civic-resident-textarea::placeholder {
+  color: var(--cf-slate-400);
+}
+
+.civic-resident-input:focus,
+.civic-resident-textarea:focus {
+  border-color: var(--cf-primary-500);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.18);
+  background: #ffffff;
+}
+
+.civic-resident-textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.5;
+  padding-bottom: 1.25rem;
+}
+
+/* Character Counter & Progress Bar */
+.civic-resident-char-counter {
+  font-family: var(--cf-font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cf-slate-400);
+}
+
+.civic-resident-char-counter.warning {
+  color: var(--cf-amber-500);
+}
+
+.civic-resident-char-counter.danger {
+  color: var(--cf-rose-500);
+}
+
+.civic-resident-textarea-progress {
+  position: absolute;
+  bottom: 4px;
+  left: 6px;
+  right: 6px;
+  height: 3px;
+  background: rgba(226, 232, 240, 0.6);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.civic-resident-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--cf-cyan-500);
+  transition: width 0.15s ease, background-color 0.25s ease;
+}
+
+.civic-resident-progress-fill.warning {
+  background: var(--cf-amber-500);
+}
+
+.civic-resident-progress-fill.danger {
+  background: var(--cf-rose-500);
+}
+
+/* --------------------------------------------------------------------------
+   9. Submit Section & CTA
+   -------------------------------------------------------------------------- */
+.civic-resident-submit-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.civic-resident-btn-submit {
+  width: 100%;
+  padding: 1.125rem 2rem;
+  font-size: 1.125rem;
+  letter-spacing: 0.04em;
+}
+
+.civic-resident-btn-arrow {
+  transition: transform var(--cf-transition-bounce);
+}
+
+.civic-resident-btn-submit:hover:not(:disabled) .civic-resident-btn-arrow {
+  transform: translateX(5px);
+}
+
+.civic-resident-submit-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  color: var(--cf-slate-500);
+  margin: 0;
+}
+
+.civic-resident-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: cfSpin 0.75s linear infinite;
+}
+
+@keyframes cfSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Shake Animation for Invalid Card */
+.civic-resident-shake {
+  animation: cfShake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  border-color: var(--cf-rose-400) !important;
+}
+
+@keyframes cfShake {
+  10%, 90% { transform: translate3d(-2px, 0, 0); }
+  20%, 80% { transform: translate3d(3px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-5px, 0, 0); }
+  40%, 60% { transform: translate3d(5px, 0, 0); }
+}
+
+/* --------------------------------------------------------------------------
+   10. Success Confirmation Modal
+   -------------------------------------------------------------------------- */
+.civic-resident-success-content {
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.civic-resident-confetti-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.civic-resident-confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  opacity: 0;
+  animation: cfConfettiRain 2.5s ease-out forwards;
+}
+
+@keyframes cfConfettiRain {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(450px) rotate(720deg); opacity: 0; }
+}
+
+.civic-resident-success-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.civic-resident-success-check-bubble {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--cf-gradient-emerald);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
+  animation: cfPopIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.civic-resident-check-svg {
+  width: 36px;
+  height: 36px;
+}
+
+@keyframes cfPopIn {
+  0% { transform: scale(0) rotate(-45deg); }
+  70% { transform: scale(1.15) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.civic-resident-modal-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--cf-slate-900);
+  margin: 0 0 0.5rem;
+}
+
+.civic-resident-modal-subtitle {
+  font-size: 0.9375rem;
+  color: var(--cf-slate-600);
+  margin: 0 0 1.5rem;
+}
+
+.civic-resident-report-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--cf-slate-200);
+  border-radius: var(--cf-radius-lg);
+  padding: 1.25rem;
+  margin-bottom: 1.75rem;
+  box-shadow: var(--cf-shadow-sm);
+  text-align: left;
+}
+
+.civic-resident-report-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.civic-resident-report-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--cf-slate-400);
+}
+
+.civic-resident-report-id {
+  font-family: var(--cf-font-mono);
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--cf-primary-700);
+  background: var(--cf-primary-50);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--cf-radius-sm);
+  border: 1px solid var(--cf-primary-200);
+}
+
+.civic-resident-report-divider {
+  height: 1px;
+  background: var(--cf-slate-200);
+  margin: 0.875rem 0;
+}
+
+.civic-resident-report-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.civic-resident-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.civic-resident-detail-icon {
+  font-size: 1.25rem;
+}
+
+.civic-resident-detail-label {
+  font-size: 0.75rem;
+  color: var(--cf-slate-500);
+  display: block;
+}
+
+.civic-resident-detail-val {
+  font-size: 0.875rem;
+  color: var(--cf-slate-800);
+}
+
+.civic-resident-ai-banner {
+  background: rgba(248, 250, 252, 0.9);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  border-radius: var(--cf-radius-md);
+  padding: 0.875rem;
+}
+
+.civic-resident-ai-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+}
+
+.civic-resident-ai-sparkle {
+  color: var(--cf-primary-600);
+  font-size: 0.875rem;
+}
+
+.civic-resident-ai-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--cf-primary-900);
+  flex: 1;
+}
+
+.civic-resident-ai-desc {
+  font-size: 0.75rem;
+  color: var(--cf-slate-600);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.civic-resident-btn-another {
+  width: 100%;
+}
+
+@keyframes cfFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
