@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>CivicFix — Spot it. Pin it. Fix it. | Modern Civic Problem Reporting</title>
-  <meta name="description" content="Report local neighborhood issues in seconds. CivicFix uses interactive mapping and AI-assisted triage to fix potholes, waste, water leakage, and street hazards.">
+  <meta name="description"
+    content="Report local neighborhood issues in seconds. CivicFix uses interactive mapping and AI-assisted triage to fix potholes, waste, water leakage, and street hazards.">
 
   <!-- Google Fonts: Plus Jakarta Sans & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"
+    rel="stylesheet">
 
   <!-- Leaflet CSS for OpenStreetMap -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 
   <!-- Shared Design Tokens & Resident CSS -->
-  <link rel="stylesheet" href="../static/css/shared.css">
-  <link rel="stylesheet" href="resident.css">
+  <link rel="stylesheet" href="/frontend/static/css/shared.css">
+  <link rel="stylesheet" href="/frontend/resident/resident.css">
 </head>
+
 <body class="civic-resident-body">
 
   <!-- Subtle Ambient Background Blobs & Floating Geometry -->
@@ -52,11 +58,11 @@
       <div class="civic-resident-hero-badge">
         <span class="civic-resident-sparkle">✦</span> RESIDENT EMPOWERMENT PLATFORM
       </div>
-      
+
       <h1 id="cfHeroHeading" class="civic-resident-hero-title">
         Spot it. Pin it. <span class="civic-resident-title-gradient">Fix it.</span>
       </h1>
-      
+
       <p class="civic-resident-hero-subtitle">
         Report local problems in seconds. Help make your neighborhood safer, cleaner, and better for everyone.
       </p>
@@ -104,12 +110,15 @@
             <p class="civic-resident-card-desc">Take a photo or upload an image from your device.</p>
 
             <!-- Drag & Drop Zone -->
-            <div class="civic-resident-dropzone" id="cfDropzone" tabindex="0" role="button" aria-label="Upload photo of the issue">
-              <input type="file" id="cfImageInput" accept="image/*" class="civic-resident-file-input" aria-label="Select issue image">
-              
+            <div class="civic-resident-dropzone" id="cfDropzone" tabindex="0" role="button"
+              aria-label="Upload photo of the issue">
+              <input type="file" id="cfImageInput" accept="image/*" class="civic-resident-file-input"
+                aria-label="Select issue image">
+
               <div class="civic-resident-dropzone-prompt" id="cfDropzonePrompt">
                 <div class="civic-resident-camera-icon-wrap">
-                  <svg class="civic-resident-camera-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg class="civic-resident-camera-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
                     <circle cx="12" cy="13" r="4"></circle>
                   </svg>
@@ -119,7 +128,11 @@
                   <span class="civic-resident-drop-secondary">Drag & drop supported &bull; Max 5 MB</span>
                 </div>
                 <button type="button" class="civic-resident-btn-browse" id="cfBrowseBtn">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
                   Choose Photo
                 </button>
               </div>
@@ -139,8 +152,13 @@
                   </div>
                   <div class="civic-resident-preview-actions">
                     <button type="button" class="civic-resident-btn-secondary" id="cfChangeImageBtn">Change</button>
-                    <button type="button" class="civic-resident-btn-remove" id="cfRemoveImageBtn" aria-label="Remove image">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                    <button type="button" class="civic-resident-btn-remove" id="cfRemoveImageBtn"
+                      aria-label="Remove image">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                      </svg>
                       Remove
                     </button>
                   </div>
@@ -169,35 +187,42 @@
 
             <!-- Category Selector Pills / Cards -->
             <div class="civic-resident-field-group">
-              <label class="civic-resident-field-label">Issue Category <span class="civic-resident-required">*</span></label>
+              <label class="civic-resident-field-label">Issue Category <span
+                  class="civic-resident-required">*</span></label>
               <div class="civic-resident-categories-grid" role="radiogroup" aria-label="Select issue category">
-                
-                <button type="button" class="civic-resident-category-card" data-category="Pothole" role="radio" aria-checked="false">
+
+                <button type="button" class="civic-resident-category-card" data-category="Pothole" role="radio"
+                  aria-checked="false">
                   <span class="civic-resident-cat-icon">🚧</span>
                   <span class="civic-resident-cat-name">Pothole</span>
                 </button>
 
-                <button type="button" class="civic-resident-category-card" data-category="Waste" role="radio" aria-checked="false">
+                <button type="button" class="civic-resident-category-card" data-category="Waste" role="radio"
+                  aria-checked="false">
                   <span class="civic-resident-cat-icon">🗑️</span>
                   <span class="civic-resident-cat-name">Waste</span>
                 </button>
 
-                <button type="button" class="civic-resident-category-card" data-category="Lighting" role="radio" aria-checked="false">
+                <button type="button" class="civic-resident-category-card" data-category="Lighting" role="radio"
+                  aria-checked="false">
                   <span class="civic-resident-cat-icon">💡</span>
                   <span class="civic-resident-cat-name">Lighting</span>
                 </button>
 
-                <button type="button" class="civic-resident-category-card" data-category="Water" role="radio" aria-checked="false">
+                <button type="button" class="civic-resident-category-card" data-category="Water" role="radio"
+                  aria-checked="false">
                   <span class="civic-resident-cat-icon">💧</span>
                   <span class="civic-resident-cat-name">Water</span>
                 </button>
 
-                <button type="button" class="civic-resident-category-card" data-category="Hazard" role="radio" aria-checked="false">
+                <button type="button" class="civic-resident-category-card" data-category="Hazard" role="radio"
+                  aria-checked="false">
                   <span class="civic-resident-cat-icon">⚠️</span>
                   <span class="civic-resident-cat-name">Hazard</span>
                 </button>
 
-                <button type="button" class="civic-resident-category-card" data-category="Other" role="radio" aria-checked="false">
+                <button type="button" class="civic-resident-category-card" data-category="Other" role="radio"
+                  aria-checked="false">
                   <span class="civic-resident-cat-icon">💬</span>
                   <span class="civic-resident-cat-name">Other</span>
                 </button>
@@ -209,24 +234,29 @@
             <!-- Issue Title / Summary Input -->
             <div class="civic-resident-field-group">
               <div class="civic-resident-label-row">
-                <label for="cfTitleInput" class="civic-resident-field-label">Short Summary <span class="civic-resident-required">*</span></label>
+                <label for="cfTitleInput" class="civic-resident-field-label">Short Summary <span
+                    class="civic-resident-required">*</span></label>
                 <span class="civic-resident-field-hint">e.g. Deep pothole on 4th cross</span>
               </div>
               <div class="civic-resident-input-wrapper">
-                <input type="text" id="cfTitleInput" class="civic-resident-input" placeholder="Give this issue a short title..." maxlength="120" autocomplete="off" required>
+                <input type="text" id="cfTitleInput" class="civic-resident-input"
+                  placeholder="Give this issue a short title..." maxlength="120" autocomplete="off" required>
               </div>
             </div>
 
             <!-- Description Textarea + Live Character Counter -->
             <div class="civic-resident-field-group">
               <div class="civic-resident-label-row">
-                <label for="cfDescInput" class="civic-resident-field-label">What happened? <span class="civic-resident-required">*</span></label>
+                <label for="cfDescInput" class="civic-resident-field-label">What happened? <span
+                    class="civic-resident-required">*</span></label>
                 <div class="civic-resident-char-counter" id="cfCharCounter">
                   <span id="cfCharCount">0</span> / 500
                 </div>
               </div>
               <div class="civic-resident-textarea-wrapper">
-                <textarea id="cfDescInput" class="civic-resident-textarea" rows="4" maxlength="500" placeholder="Tell us what you noticed... (location landmarks, safety hazards, severity)" required></textarea>
+                <textarea id="cfDescInput" class="civic-resident-textarea" rows="4" maxlength="500"
+                  placeholder="Tell us what you noticed... (location landmarks, safety hazards, severity)"
+                  required></textarea>
                 <div class="civic-resident-textarea-progress">
                   <div class="civic-resident-progress-fill" id="cfCharProgress"></div>
                 </div>
@@ -239,10 +269,11 @@
                STEP 4: SUBMIT CTA & ACTIONS
                ========================================== -->
           <section class="civic-resident-submit-section">
-            
+
             <button type="submit" class="btn-vibrant civic-resident-btn-submit" id="cfSubmitBtn">
               <span class="civic-resident-btn-text" id="cfSubmitBtnText">REPORT ISSUE</span>
-              <svg class="civic-resident-btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="civic-resident-btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
@@ -250,7 +281,8 @@
             </button>
 
             <p class="civic-resident-submit-note">
-              <span class="civic-resident-shield-icon">🛡️</span> Direct dispatch to civic operations &bull; AI-assisted triage
+              <span class="civic-resident-shield-icon">🛡️</span> Direct dispatch to civic operations &bull; AI-assisted
+              triage
             </p>
           </section>
 
@@ -260,9 +292,9 @@
 
       <!-- RIGHT COLUMN: Interactive Live Leaflet Map (Sticky on Desktop) -->
       <div class="civic-resident-map-column" id="cfDesktopMapColumn">
-        
+
         <div class="glass-card civic-resident-card civic-resident-map-card" id="cfMapCard">
-          
+
           <div class="civic-resident-card-header civic-resident-map-header">
             <div>
               <div class="civic-resident-step-pill">02 PIN</div>
@@ -270,8 +302,10 @@
             </div>
 
             <!-- Floating Locate Me Button -->
-            <button type="button" class="civic-resident-btn-locate" id="cfLocateMeBtn" title="Detect my current location">
-              <svg class="civic-resident-locate-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <button type="button" class="civic-resident-btn-locate" id="cfLocateMeBtn"
+              title="Detect my current location">
+              <svg class="civic-resident-locate-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5">
                 <circle cx="12" cy="12" r="7"></circle>
                 <circle cx="12" cy="12" r="2"></circle>
                 <line x1="12" y1="1" x2="12" y2="4"></line>
@@ -287,8 +321,9 @@
 
           <!-- Interactive Leaflet Map Container -->
           <div class="civic-resident-map-wrapper">
-            <div id="cfLeafletMap" class="civic-resident-map" role="application" aria-label="Interactive problem location map"></div>
-            
+            <div id="cfLeafletMap" class="civic-resident-map" role="application"
+              aria-label="Interactive problem location map"></div>
+
             <!-- Map Overlay Tip -->
             <div class="civic-resident-map-overlay-tip" id="cfMapOverlayTip">
               <span>📍 Drag the pin or click on map</span>
@@ -297,7 +332,7 @@
 
           <!-- Location Badges & Coordinates -->
           <div class="civic-resident-location-bar">
-            
+
             <div class="civic-resident-location-status" id="cfLocationStatus">
               <span class="civic-resident-loc-dot" id="cfLocDot"></span>
               <span class="civic-resident-loc-status-text" id="cfLocStatusText">○ Location not selected</span>
@@ -330,13 +365,14 @@
        ========================================== -->
   <div class="modal-overlay" id="cfSuccessModal" role="dialog" aria-modal="true" aria-labelledby="cfModalTitle">
     <div class="modal-content civic-resident-success-content">
-      
+
       <!-- Confetti / Particle Container -->
       <div class="civic-resident-confetti-wrap" id="cfConfettiWrap" aria-hidden="true"></div>
 
       <div class="civic-resident-success-header">
         <div class="civic-resident-success-check-bubble">
-          <svg class="civic-resident-check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="civic-resident-check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+            stroke-linecap="round" stroke-linejoin="round">
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
         </div>
@@ -401,9 +437,11 @@
   <div class="toast-container" id="cfToastContainer" aria-live="polite" aria-atomic="true"></div>
 
   <!-- Leaflet JS CDN -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
   <!-- Resident Application Logic -->
   <script src="resident.js"></script>
 </body>
+
 </html>
