@@ -592,11 +592,11 @@ const CivicFixResident = (() => {
   }
 
   function determineApiEndpoint() {
-    // If frontend is served from the same host as backend
-    if (window.location.origin.includes('8000') || window.location.protocol.startsWith('http')) {
+    // If frontend is served from FastAPI on port 8000
+    if (window.location.port === '8000' || window.location.port === '80' || (window.location.protocol === 'http:' && !window.location.port)) {
       return '/api/reports/';
     }
-    // Fallback if accessed via file:// or different test port
+    // Fallback if accessed via Live Server (e.g. 5500, 3000) or file://
     return 'http://127.0.0.1:8000/api/reports/';
   }
 

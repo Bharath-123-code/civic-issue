@@ -42,6 +42,10 @@ resident_dir = Path("frontend/resident")
 if resident_dir.exists():
     app.mount("/resident", StaticFiles(directory=str(resident_dir), html=True), name="resident")
 
+static_dir = Path("frontend/static")
+if static_dir.exists():
+    app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
+
 frontend_dir = Path("frontend")
 if frontend_dir.exists():
     app.mount("/frontend", StaticFiles(directory=str(frontend_dir), html=True), name="frontend")
@@ -50,6 +54,7 @@ if frontend_dir.exists():
 def read_root():
     return {
         "message": "Welcome to CivicFix API",
+        "resident_portal": "/resident/",
         "admin_dashboard": "/admin/",
         "docs_url": "/docs",
         "status": "Running"
