@@ -40,12 +40,13 @@ def init_db():
         """)
         conn.commit()
         
-        # Check if database is empty
+        # Check if database is empty and not a test environment
         cursor = conn.cursor()
         cursor.execute("SELECT COUNT(*) FROM reports")
         count = cursor.fetchone()[0]
         
-        if count == 0:
+        is_test_env = "test" in str(settings.DATABASE_PATH).lower()
+        if count == 0 and not is_test_env:
             seed_file = Path("backend/data/seed_reports.json")
             if seed_file.exists():
                 try:
@@ -67,9 +68,10 @@ def init_db():
                                 report.get("status", "Reported"),
                                 report.get("ai_priority", "Medium"),
                                 report.get("admin_notes"),
-                                report.get("created_at", datetime.datetime.utcnow().isoformat())
+                                report.get("created_at", datetime.datetime.now(datetime.timezone.utc).isoformat())
                             ))
                         conn.commit()
                         print(f"Preloaded {len(data)} reports from seed file.")
                 except Exception as e:
                     print(f"Error loading seed reports: {e}")
+
