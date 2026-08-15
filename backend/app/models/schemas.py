@@ -1,17 +1,21 @@
 # backend/app/models/schemas.py
 from enum import Enum
-from pydantic import BaseModel, Field, ConfigDict
-from typing import Optional
+from typing import Literal, Optional
+
+from pydantic import BaseModel, ConfigDict, Field
+
 
 class StatusEnum(str, Enum):
     REPORTED = "Reported"
     IN_REVIEW = "In Review"
     RESOLVED = "Resolved"
 
+
 class PriorityEnum(str, Enum):
     HIGH = "High"
     MEDIUM = "Medium"
     LOW = "Low"
+
 
 class ReportCreate(BaseModel):
     title: str = Field(..., min_length=1, max_length=255)
@@ -22,9 +26,11 @@ class ReportCreate(BaseModel):
     image_url: Optional[str] = None
     priority: Optional[PriorityEnum] = None
 
+
 class ReportUpdate(BaseModel):
     status: Optional[StatusEnum] = None
     admin_notes: Optional[str] = None
+
 
 class ReportResponse(BaseModel):
     id: int
@@ -53,7 +59,53 @@ class ReportResponse(BaseModel):
                 "status": "Reported",
                 "ai_priority": "High",
                 "admin_notes": None,
-                "created_at": "2026-08-15T09:30:00"
+                "created_at": "2026-08-15T09:30:00",
             }
-        }
+        },
+    )
+
+
+# ============================================================
+# Member 4 - GenAI Output Schemas
+# ============================================================
+
+CivicCategory = Literal[
+    "Pothole",
+    "Garbage",
+    "Lighting",
+    "Drainage",
+    "Water Leakage",
+    "Road Damage",
+    "Traffic/Signage",
+    "Other",
+]
+
+IssuePriority = Literal["High", "Medium", "Low"]
+
+
+class AIEvaluationResult(BaseModel):
+    """Structured AI output schema for civic issue classification."""
+
+    category: CivicCategory = Field(
+        ...,
+        description="The classified category of the civic issue.",
+    )
+
+    priority: IssuePriority = Field(
+        ...,
+        description="Assessed urgency/severity level: High, Medium, or Low.",
+    )
+
+    department: str = Field(
+        ...,
+        description="The municipal department responsible for resolving the issue.",
+    )
+
+
+class AdminActionDraft(BaseModel):
+    """Schema for AI-generated administrative work-order/action summary."""
+
+    suggested_action: str = Field(
+        ...,
+        description="Concise actionable administrative work-order draft.",
     )

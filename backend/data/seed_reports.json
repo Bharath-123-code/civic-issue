@@ -1,1 +1,80 @@
-{}
+[
+  {
+    "id": 1,
+    "title": "Hazardous deep pothole near crossroad",
+    "description": "Large deep pothole on the right lane near the 4th Avenue junction. Vehicles are swerving abruptly to avoid tyre damage, creating a serious collision risk during peak traffic hours.",
+    "category": "Pothole",
+    "latitude": 12.97194,
+    "longitude": 77.59365,
+    "status": "Reported",
+    "ai_priority": "High",
+    "image_url": "static/images/sample_issues/sample_pothole.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Overflowing waste collection point",
+    "description": "Commercial dustbins have been overflowing onto the sidewalk for three days. Debris and organic waste are spilling into the pedestrian pathway creating unpleasant odors and sanitation concerns.",
+    "category": "Garbage",
+    "latitude": 12.97412,
+    "longitude": 77.59623,
+    "status": "In Review",
+    "ai_priority": "Medium",
+    "image_url": "static/images/sample_issues/sample_garbage.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Non-functional streetlights along residential avenue",
+    "description": "Three consecutive streetlight fixtures along Elm Street are completely unlit after dark. The section is pitch black, posing a safety issue for evening pedestrians and cyclists.",
+    "category": "Lighting",
+    "latitude": 12.96985,
+    "longitude": 77.59124,
+    "status": "Reported",
+    "ai_priority": "Medium",
+    "image_url": "static/images/sample_issues/sample_lighting.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Clogged stormwater drain causing street waterlogging",
+    "description": "Main storm drain inlet is heavily choked with silt and plastic debris. Heavy waterlogging is submerging the curb and entering the adjacent bus stop bay.",
+    "category": "Drainage",
+    "latitude": 12.97651,
+    "longitude": 77.59847,
+    "status": "In Review",
+    "ai_priority": "High",
+    "image_url": "static/images/sample_issues/sample_drainage.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Potable water pipeline leaking on main road",
+    "description": "Clean municipal water is continuously pooling onto the asphalt from an underground pipe leak near the civic park gate. Water has been flowing steadily for over 12 hours.",
+    "category": "Water Leakage",
+    "latitude": 12.97052,
+    "longitude": 77.59781,
+    "status": "Reported",
+    "ai_priority": "Medium",
+    "image_url": "static/images/sample_issues/sample_water_leak.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Severe asphalt erosion and road shoulder collapse",
+    "description": "Extensive road surface cracking and asphalt breakdown along the westbound transit corridor. Heavy vehicles have caused deep ruts and asphalt displacement.",
+    "category": "Road Damage",
+    "latitude": 12.97321,
+    "longitude": 77.59015,
+    "status": "Resolved",
+    "ai_priority": "High",
+    "image_url": "static/images/sample_issues/sample_road_damage.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Faded directional signage and bent speed warning post",
+    "description": "The neighborhood school zone speed warning sign is bent at a 45-degree angle and the reflective coating has peeled off, reducing visibility for oncoming drivers.",
+    "category": "Traffic/Signage",
+    "latitude": 12.96814,
+    "longitude": 77.59532,
+    "status": "Resolved",
+    "ai_priority": "Low",
+    "image_url": "static/images/sample_issues/sample_traffic_sign.jpg"
+  }
+]
+
