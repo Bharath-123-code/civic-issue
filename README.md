@@ -71,9 +71,7 @@
 
 Follow these instructions to get a local copy of CivicFix up and running.
 
-<details>
-<summary><b>Step 1: Prerequisites & Environment</b></summary>
-<br>
+### 1️⃣ Prerequisites & Environment
 
 Make sure you have **Python** installed on your system.
 
@@ -82,21 +80,15 @@ Create and activate a virtual environment:
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 ```
-</details>
 
-<details>
-<summary><b>Step 2: Install Dependencies</b></summary>
-<br>
+### 2️⃣ Install Dependencies
 
 Install the required packages from `requirements.txt`:
 ```powershell
 pip install -r requirements.txt
 ```
-</details>
 
-<details>
-<summary><b>Step 3: Configuration</b></summary>
-<br>
+### 3️⃣ Configuration
 
 Create a `.env` file at the root directory. You can use `.env.example` as a template:
 ```env
@@ -104,17 +96,13 @@ DATABASE_PATH=backend/data/civic_issue.db
 HOST=127.0.0.1
 PORT=8000
 ```
-</details>
 
-<details>
-<summary><b>Step 4: Boot up the Server</b></summary>
-<br>
+### 4️⃣ Boot up the Server
 
 Start the application with Uvicorn:
 ```powershell
 .venv\Scripts\python -m uvicorn backend.app.main:app --reload
 ```
-</details>
 
 <br>
 
